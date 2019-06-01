@@ -3,19 +3,14 @@
 
 name = "shirokuro"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
+licenselink = "https://github.com/cyanife/hugo-theme-shirokuro/blob/master/LICENSE"
 description = ""
-homepage = "http://example.com/"
-tags = []
-features = []
+homepage = "https://github.com/cyanife/hugo-theme-shirokuro"
+tags = ["blog",]
+features = ["blog",]
 min_version = "0.41"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "cyanife"
+  homepage = "https://github.com/cyanife"
 
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
