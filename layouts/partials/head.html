@@ -1,4 +1,4 @@
-<!-- Site & Page Meta Data -->
+{{/* Site & Page Meta Data */}}
 {{ $gohugoio := "gohugoio" }}
 {{ $avatar := "/img/avatar.jpg" }}
 {{- $style := resources.Get "styles/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS | resources.Minify -}}
@@ -6,25 +6,23 @@
 {{- $fontAwesomeIntegrity := "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" -}}
 <head>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  {{ hugo.Generator }}
 
-    <meta name="generator" content="Hugo {{ .Hugo.Version }}" />
 
-    <!-- Permalink -->
-    <link rel="canonical" href="{{ .Permalink }}" />
+  {{/* Permalink */}}
+  <link rel="canonical" href="{{ .Permalink }}" />
 
-    <!-- Title -->
-    <title>
-    {{- block "title" . -}}
-        {{ if eq .Kind "page" }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}
-    {{- end -}}
-    </title>
-  
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
-    {{ with .Site.Params.fontAwesome }}
-    <link rel="stylesheet" href="{{ $fontAwesome }}" {{ printf "integrity=%q" $fontAwesomeIntegrity | safeHTMLAttr }} crossorigin="anonymous">
-    {{ end }}
+  {{/* Title */}}
+  <title>
+  {{- block "title" . -}}
+    {{ if eq .Kind "page" }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}
+  {{- end -}}
+  </title>
+
+  {{/* Styles */}}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  <link rel="stylesheet" href="{{ $fontAwesome }}" {{ printf "integrity=%q" $fontAwesomeIntegrity | safeHTMLAttr }} crossorigin="anonymous">
 
 </head>

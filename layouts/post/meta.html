@@ -1,0 +1,14 @@
+{{ $taxo := "tags" }} <!-- Use the plural form here -->
+<p class="post-summary-meta">
+  <time datetime="{{ .Date }}">
+    {{ .Date.Format "Jan 2, 2006" }}
+  </time>
+  <ul id="{{ $taxo }}">
+    {{ range .Param $taxo }}
+      {{ $name := . }}
+      {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+          <li>{ <a href="{{ .Permalink }}">{{ $name }}</a> }</li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</p>

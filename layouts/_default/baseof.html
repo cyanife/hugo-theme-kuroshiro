@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="container">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{ if ne .Kind "404" }}
-            {{- partial "suspension.html" . -}}
-        {{ end }}
-        {{- partial "footer.html" . -}}
-    </body>
+  {{- partial "head.html" . -}}
+  <body>
+    {{- partial "header.html" . -}}
+    <div id="container">
+    {{- block "main" . }}{{- end }}
+    </div>
+      {{ if ne .Kind "404" }}
+        {{- partial "suspension.html" . -}}
+      {{ end }}
+    {{- partial "footer.html" . -}}
+  </body>
 </html>

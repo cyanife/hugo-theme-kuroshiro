@@ -1,0 +1,12 @@
+<article class="post-entry">
+  <header class="post-header">
+    <h1 class="post-title"><a href="{{ .Permalink }}" class="post-link">{{ .Title }}</a></h1>
+    {{ .Render "meta" }} 
+  </header>
+  <p class="post-summary">{{ .Summary | plainify | htmlUnescape }}</p>
+  {{ if .Truncated }}
+  <footer class="post-footer">
+    <a class="read-more" href="{{ .Permalink }}">Read More →</a>
+  </footer>
+  {{ end }}
+</article>
