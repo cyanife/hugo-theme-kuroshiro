@@ -1,0 +1,16 @@
+    {{ if ne .Kind "404" }}
+    {{- $upIcon := "icon icon-up" -}}
+    {{- $commentIcon := "icon icon-comment" -}}
+    <div class="suspension">
+      <a role="button" aria-label="Go top" title="Go top" class="to-top is-hide"><span class="{{ $upIcon }}" aria-hidden="true"></span></a>
+      {{ if and (eq .Type "posts") (eq .Kind "page") }}
+        {{ if .Site.DisqusShortname }}
+      <a role="button" aria-label="Go to comments" title="Go to comments" class="to-comment" href="#disqus_thread"><span class="{{ $commentIcon }}" aria-hidden="true"></span></a>
+        {{ else if .Site.Params.Gitment }}
+      <a role="button" aria-label="Go to comments" title="Go to comments" class="to-comment" href="#gitment-container"><span class="{{ $commentIcon }}" aria-hidden="true"></span></a>
+        {{ else if .Site.Params.isso }}
+      <a role="button" aria-label="Go to comments" title="Go to comments" class="to-comment" href="#isso-container"><span class="{{ $commentIcon }}" aria-hidden="true"></span></a>
+        {{ else }}{{ end }}
+      {{ end }}
+    </div>
+    {{ end }}

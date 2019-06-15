@@ -1,0 +1,115 @@
+{{- $avatar := resources.Get (.Site.Params.avatar | default "images/avatar.png") -}}
+
+<div class="titlebar">
+  <header>
+    <h1>
+      <a href="/">cyanife!</a>
+    </h1>
+  </header>
+</div>
+
+<div class="off-canvas-menu">
+  <input type="checkbox" class="toggle-checkbox" id="toggle-checkbox">
+  <aside class="menu">
+    <a href="{{ .Site.BaseURL }}"><img class="avatar" src="{{ $avatar.RelPermalink }}" alt="Avatar"></a>
+    <p class="subtitle">{{ .Site.Params.subtitle }}</p>
+    <nav class="site-menu">
+      {{ $type := .Type }}
+      {{ $kind := .Kind }}
+      {{ $page := . }}
+      {{ range .Site.Menus.main }}
+        <a class="menu-item
+          {{ if or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }} active{{ end }}
+          {{ if and (eq .Identifier "tags") (eq $kind "taxonomy") }} active{{ end }}
+          {{ if and (eq .Identifier "home") (eq $type "posts") }} active{{ end }}"
+          href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <nav class="icon-menu">
+      <ul class="icon-list">
+      {{- $emailIcon := "icon icon-email" -}}
+      {{- $githubIcon := "icon icon-github" -}}
+      {{- $stackoverflowIcon := "icon icon-stackoverflow" -}}
+      {{- $facebookIcon := "icon icon-facebook" -}}
+      {{- $linkedinIcon := "icon icon-linkedin" -}}
+      {{- $twitterIcon := "icon icon-twitter" -}}
+      {{- $youtubeIcon := "icon icon-youtube" -}}
+      {{- $instagramIcon := "icon icon-instagram" -}}
+      {{- $rssIcon := "icon icon-rss" -}}
+
+      {{- with .Site.Params.email -}}
+        <li class="icon-item">
+          <a href="mailto:{{ . }}" title="Email" aria-label="Email">
+            <span class="{{ $emailIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.github -}}
+        <li class="icon-item">
+          <a href="//github.com/{{ . }}" rel="me" title="GitHub" aria-label="GitHub">
+	    <span class="{{ $githubIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.stackoverflow -}}
+        <li class="icon-item">
+          <a href="//stackoverflow.com/users/{{ . }}" rel="me" title="Stack Overflow"  aria-label="Stack Overflow">
+            <span class="{{ $stackoverflowIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.facebook -}}
+        <li class="icon-item">
+          <a href="//www.facebook.com/{{ . }}" rel="me" title="Facebook" aria-label="Facebook">
+            <span class="{{ $facebookIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.linkedin -}}
+        <li class="icon-item">
+          <a href="//www.linkedin.com/in/{{ . }}" rel="me" title="LinkedIn" aria-label="LinkedIn">
+            <span class="{{ $linkedinIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.twitter -}}
+        <li class="icon-item">
+          <a href="//twitter.com/{{ . }}" rel="me" title="Twitter" aria-label="Twitter">
+            <span class="{{ $twitterIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.youtube -}}
+        <li class="icon-item">
+          <a href="//www.youtube.com/user/{{ . }}" rel="me" title="YouTube" aria-label="YouTube">
+            <span class="{{ $youtubeIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.instagram -}}
+        <li class="icon-item">
+          <a href="//www.instagram.com/{{ . }}" rel="me" title="Instagram" aria-label="Instagram">
+            <span class="{{ $instagramIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+
+      {{- with .Site.Params.rss -}}
+        <li class="icon-item">
+          <a rel="alternate" type="application/rss+xml" href="{{ . | relURL }}" title="RSS" aria-label="RSS">
+            <span class="{{ $rssIcon }}" aria-hidden="true"></span>
+          </a>
+        </li>
+      {{- end -}}
+      </ul>
+
+    </nav>
+  </aside>
+</div>
