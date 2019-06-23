@@ -1,0 +1,7 @@
+{{ define "main" }}
+<ul>
+	{{ range $items := .Site.Taxonomies.archives.Alphabetical.Reverse }}
+		<li><a href="{{ $.Site.BaseURL }}archives/{{ .Name | urlize | lower }}">{{ .Name }} ({{ .Count }})</a></li>
+	{{ end }}
+</ul>
+{{ end }}
